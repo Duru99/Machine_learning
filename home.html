@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alert System</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    
+</head>
+<body>
+    <h1>MEDICAL ASSISTANCE ALERT SYSTEM</h1>
+
+    <!-- Camera button -->
+    <button id="camera-btn" onclick="startCamera()">Camera</button>
+    <video id="video-preview" autoplay></video>
+    <script>
+        var video = document.getElementById("camera");
+
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.style.display = "block";
+                })
+                .catch(function(error) {
+                    console.error("Error accessing camera:", error);
+                });
+        }
+    </script>
+    <form id="upload-form" action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data">
+        <div class="img-input">
+            <input type="file" id="image-input" name="image-input" accept="image/*">
+            <label for="image-input">Input Image</label>
+            <input type="submit" value="Predict" class="btn">
+        </div>
+    </form>
+
+    <script>
+        var imageInput = document.getElementById("image-input");
+        imageInput.addEventListener("change", function(event) {
+            if (event.target.files.length == 0) {
+                return;
+            }
+        });
+
+        // Function to handle the camera button click
+        function startCamera() {
+            // Add your camera-related logic here
+            alert("Camera button clicked!");
+        }
+    </script>
+    <script>
+        var video = document.getElementById("camera");
+
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.style.display = "block";
+                })
+                .catch(function(error) {
+                    console.error("Error accessing camera:", error);
+                });
+        }
+    </script>
+</body>
+</html>
